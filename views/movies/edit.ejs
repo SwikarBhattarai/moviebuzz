@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align:center">Edit <%=movie.name%></h1>
+        <div style="width:60%; margin: 25px auto;">
+           <form action="/movies/<%= movie._id %>?_method=PUT" method="POST">
+                <p>
+                    <input class="form-control" type="text" placeholder="movie name" name="movie[name]" value="<%=movie.name%>">
+                </p>
+                
+                 <p>
+                    <input class="form-control" type="text" placeholder="image url" name="movie[image]" value="<%=movie.image%>">
+                </p>
+                
+                  <p>
+                    <input class="form-control" type="number" value="<%=movie.rating%>" name="movie[rating]" min="0" step="1" max="10">
+                </p>
+                
+                 <p>
+                    <textarea class="form-control" type="text" rows=5 columns=20 name="movie[description]"><%=movie.description%></textarea>
+                </p>
+                
+                <br>
+                    <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            
+            </form>  
+            <br>
+            <a href="/movies">Go Back</a> 
+        </div>
+       
+        
+        
+    </div>
+  
+</div>
+
+
+
+<% include ../partials/footer %>

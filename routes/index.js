@@ -25,7 +25,7 @@ router.post("/register", function(req,res){
         }
         passport.authenticate("local")(req,res,function(){
             req.flash("success", "Welcome to Movie Buzz "+user.username)
-            res.redirect("/campgrounds");
+            res.redirect("/movies");
         });
     });
 });
@@ -39,19 +39,19 @@ router.get("/login",function(req,res){
 
 router.post("/login",passport.authenticate("local",
 {
-    successRedirect:"/campgrounds",
+    successRedirect:"/movies",
     failureRedirect:"/login",
-    failureFlash:true
+    failureFlash:true,
     
 }), function(req,res){
-    
+
 });
 
 //LOGOUT ROUTE
 router.get("/logout", function(req,res){
     req.flash("success","Logout successful!")
     req.logout();
-    res.redirect("/campgrounds");
+    res.redirect("/movies");
 });
 
 

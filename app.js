@@ -2,7 +2,7 @@ var express=require("express");
 var app=express();
 var bodyParser=require("body-parser");
 var mongoose=require("mongoose");
-var Campground=require("./models/campground");
+var Movie=require("./models/movie");
 var Comment=require("./models/comment")
 var flash=require("connect-flash");
 var seedDB=require("./seeds");
@@ -13,7 +13,7 @@ var methodoverride=require("method-override")
 
 var indexRoutes=require("./routes/index")
 var commentsRoutes=require("./routes/comments")
-var campgroundsRoutes=require("./routes/campgrounds")
+var moviesRoutes=require("./routes/movies")
 
 mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://localhost/movie_buzz")
@@ -51,8 +51,8 @@ app.use(function(req,res,next){
 });
 
 app.use(indexRoutes)
-app.use("/campgrounds/:id/comments",commentsRoutes)
-app.use("/campgrounds",campgroundsRoutes)
+app.use("/movies/:id/comments",commentsRoutes)
+app.use("/movies",moviesRoutes)
 
 
 app.listen(process.env.PORT, process.env.IP, function(req,res){

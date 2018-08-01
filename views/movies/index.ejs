@@ -8,7 +8,7 @@
             <h1>Welcome to Movie Buzz!</h1>
             <p>Watched a movie? <a href="/login">Sign in </a>to share your review with us. </p>
             <p>
-                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add a Movie Review</a>
+                <a class="btn btn-primary btn-lg" href="/movies/new">Add a Movie Review</a>
             </p>
         </div>
         
@@ -17,21 +17,21 @@
     <div><h3>Latest Movie Reviews</h3></div>
     <div class="row text-center">
        
-       <% campgrounds.forEach(function(campground){ %>
+       <% movies.forEach(function(movie){ %>
         <div class="col-md-3 col-sm-6">
             <div class="thumbnail">
-                <img style="width:100%; height:230px" src="<%= campground.image %>" />
+                <img style="width:100%; height:230px" src="<%= movie.image %>" />
                 <div class="caption">
                      <h4>
-                        <%= campground.name%>
+                        <%= movie.name%>
                     </h4>
-                    <p style="text-align:justify ; font-size:12px; ">Posted by: <%=campground.author.username%></p>
-                    <p style="text-align:justify ; font-size:12px; ">User's Rating: <%=campground.price%></p>
+                    <p style="text-align:justify ; font-size:12px; ">Posted by: <%=movie.author.username%></p>
+                    <p style="text-align:justify ; font-size:12px; ">User's Rating: <%=movie.rating%></p>
                 </div>
                 
                 
                 <p>
-                     <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">Read More</a>
+                     <a href="/movies/<%= movie._id %>" class="btn btn-primary">Read More</a>
                 </p>
             </div>
         </div>

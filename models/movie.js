@@ -1,9 +1,9 @@
 var mongoose=require("mongoose");
 
 //Schema Setup
-var campgroundSchema=new mongoose.Schema({
+var movieSchema=new mongoose.Schema({
     name:String,
-    price:String,
+    rating:String,
     image:String,
     description:String,
     author:{
@@ -20,4 +20,4 @@ var campgroundSchema=new mongoose.Schema({
     }]
 });
 
-module.exports=mongoose.model("Campground",campgroundSchema);
+module.exports=mongoose.model("Movie",movieSchema);

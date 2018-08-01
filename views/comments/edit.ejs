@@ -4,7 +4,7 @@
     <div class="row">
         <h1 style="text-align:center">Edit Comment</h1>
         <div style="width:60%; margin: 25px auto;">
-           <form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id%>?_method=PUT" method="POST">
+           <form action="/movies/<%= movie_id %>/comments/<%= comment._id%>?_method=PUT" method="POST">
                 <p>
                     <textarea class="form-control" name="comment[text]"><%=comment.text%></textarea>
                 </p>
@@ -16,7 +16,7 @@
             
             </form>  
             <br>
-            <a href="/campgrounds">Go Back</a> 
+            <a href="/movies">Go Back</a> 
         </div>
        
         

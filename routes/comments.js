@@ -1,17 +1,17 @@
 var express=require("express");
 var router=express.Router({mergeParams:true});
-var Campground=require("../models/campground");
+var Movie=require("../models/movie");
 var Comment=require("..//models/comment");
 var middleware=require("../middleware")
 
 //comments new
 router.get("/new", middleware.isLoggedIn, function(req,res){
-    //find campground by id
-    Campground.findById(req.params.id, function(err,campground){
+    //find movie by id
+    Movie.findById(req.params.id, function(err,movie){
         if(err){
             console.log(err);
         }else{
-            res.render("comments/new", {campground:campground});
+            res.render("comments/new", {movie:movie});
         }
     })
     
@@ -19,11 +19,11 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 
 //comments use
 router.post("/", middleware.isLoggedIn, function(req,res){
-    //lookup campground using ID
-    Campground.findById(req.params.id, function(err, campground) {
+    //lookup movie using ID
+    Movie.findById(req.params.id, function(err, movie) {
         if(err){
             console.log(err)
-            res.redirect("/campgrounds")
+            res.redirect("/movies")
         }else{
     
                 Comment.create(req.body.comment,function(err,comment){
@@ -36,9 +36,9 @@ router.post("/", middleware.isLoggedIn, function(req,res){
                     comment.author.username=req.user.username;
                     //save comment
                     comment.save();
-                    campground.comments.push(comment);
-                    campground.save();
-                    res.redirect("/campgrounds/" +campground._id);
+                    movie.comments.push(comment);
+                    movie.save();
+                    res.redirect("/movies/" +movie._id);
                 }
             }) 
            
@@ -54,7 +54,7 @@ router.get("/:comment_id/edit", middleware.checkCommentsOwnership,function(req,r
         if(err){
             res.redirect("back");
         }else{
-              res.render("comments/edit", {campground_id:req.params.id, comment:foundComment,currentUser:req.user})
+              res.render("comments/edit", {movie_id:req.params.id, comment:foundComment,currentUser:req.user})
         }
     })
   
@@ -66,7 +66,7 @@ router.put("/:comment_id", middleware.checkCommentsOwnership, function(req,res){
         if(err){
             res.redirect("back")
         }else{
-            res.redirect("/campgrounds/" +req.params.id)
+            res.redirect("/movies/" +req.params.id)
         }
     });
 });
@@ -77,9 +77,9 @@ router.delete("/:comment_id", middleware.checkCommentsOwnership, function(req,re
     //findbyIdandRemove
     Comment.findByIdAndRemove(req.params.comment_id,function(err){
         if(err){
-            res.redirect("back")
+            res.redirect("back");
         }else{
-            res.redirect("/campgrounds/" +req.params.id,{currentUser:req.user})
+            res.redirect("/movies/"+req.params.id);
         }
     });
 });

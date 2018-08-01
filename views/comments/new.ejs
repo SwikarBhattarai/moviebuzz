@@ -2,9 +2,9 @@
 
 <div class="container">
     <div class="row">
-        <h1 style="text-align:center">Add a Comment to <%= campground.name %></h1>
+        <h1 style="text-align:center">Add a Comment to <%= movie.name %></h1>
         <div style="width:60%; margin: 25px auto;">
-           <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+           <form action="/movies/<%= movie._id %>/comments" method="POST">
                 <p>
                     <textarea class="form-control" name="comment[text]" placeholder="text"></textarea>
                 </p>
@@ -16,7 +16,7 @@
             
             </form>  
             <br>
-            <a href="/campgrounds">Go Back</a> 
+            <a href="/movies">Go Back</a> 
         </div>
        
         

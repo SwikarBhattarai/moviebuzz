@@ -1,17 +1,17 @@
 //all the middleware goes here
 
-var Campground=require("../models/campground")
+var Movie=require("../models/movie")
 var Comment=require("../models/comment")
 var middlewareObj={};
 
-middlewareObj.checkCampgroundOwnership=function(req,res,next){
+middlewareObj.checkMovieOwnership=function(req,res,next){
      if(req.isAuthenticated()){
-        //does user own the campground
-        Campground.findById(req.params.id,function(err,foundCampground){
+        //does user own the movie
+        Movie.findById(req.params.id,function(err,foundMovie){
             if(err){
                 res.redirect("back")
             }else{
-                if(foundCampground.author.id.equals(req.user._id)){
+                if(foundMovie.author.id.equals(req.user._id)){
                      next();
                 }else{
                     res.redirect("back")
@@ -26,7 +26,7 @@ middlewareObj.checkCampgroundOwnership=function(req,res,next){
 
 middlewareObj.checkCommentsOwnership=function(req,res,next){
     if(req.isAuthenticated()){
-        //does user own the campground
+        //does user own the movie
         Comment.findById(req.params.comment_id,function(err,foundComment){
             if(err){
                 res.redirect("back")
