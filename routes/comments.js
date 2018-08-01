@@ -43,6 +43,7 @@ router.post("/", middleware.isLoggedIn, function(req,res){
             }) 
            
         }
+    })
            
 })
 
@@ -57,7 +58,7 @@ router.get("/:comment_id/edit", middleware.checkCommentsOwnership,function(req,r
         }
     })
   
-})
+});
 
 //UPDATE ROUTE FOR COMMENT
 router.put("/:comment_id", middleware.checkCommentsOwnership, function(req,res){
@@ -80,10 +81,7 @@ router.delete("/:comment_id", middleware.checkCommentsOwnership, function(req,re
         }else{
             res.redirect("/campgrounds/" +req.params.id,{currentUser:req.user})
         }
-    })
+    });
 });
-
-
-
 
 module.exports=router;

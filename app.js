@@ -15,8 +15,8 @@ var indexRoutes=require("./routes/index")
 var commentsRoutes=require("./routes/comments")
 var campgroundsRoutes=require("./routes/campgrounds")
 
-mongoose.connect(process.env.DATABASEURL);
-//mongoose.connect("mongodb://localhost/movie_buzz")
+//mongoose.connect(process.env.DATABASEURL);
+mongoose.connect("mongodb://localhost/movie_buzz")
 
 
 app.use(bodyParser.urlencoded({extended: true}));
