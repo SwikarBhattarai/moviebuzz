@@ -16,8 +16,8 @@ var commentsRoutes=require("./routes/comments")
 var campgroundsRoutes=require("./routes/campgrounds")
 
 //mongoose.connect(process.env.DATABASEURL);
-//mongoose.connect("mongodb://swikar:swikar123@ds259351.mlab.com:59351/swikar_yelpcamp");
-mongoose.connect("mongodb://localhost/movie_buzz")
+mongoose.connect("mongodb://swikar:swikar123@ds147011.mlab.com:47011/movie_buzz");
+
 
 
 
