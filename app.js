@@ -15,8 +15,10 @@ var indexRoutes=require("./routes/index")
 var commentsRoutes=require("./routes/comments")
 var campgroundsRoutes=require("./routes/campgrounds")
 
-//mongodb://swikar:swikar123@ds259351.mlab.com:59351/swikar_yelpcamp
+
 mongoose.connect("mongodb://swikar:swikar123@ds259351.mlab.com:59351/swikar_yelpcamp");
+
+console.log(process.env.DATABASEURL)
 
 
 
