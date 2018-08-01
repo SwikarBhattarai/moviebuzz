@@ -24,6 +24,7 @@ router.post("/register", function(req,res){
             return res.render("register")
         }
         passport.authenticate("local")(req,res,function(){
+            req.flash("success", "Welcome to Movie Buzz "+user.username)
             res.redirect("/campgrounds");
         });
     });
@@ -32,15 +33,23 @@ router.post("/register", function(req,res){
 //show login form
 
 router.get("/login",function(req,res){
+    
     res.render("login")
 });
 
-router.post("/login",passport.authenticate("local",{successRedirect:"/campgrounds",failureRedirect:"/login"}), function(req,res){
+router.post("/login",passport.authenticate("local",
+{
+    successRedirect:"/campgrounds",
+    failureRedirect:"/login",
+    failureFlash:true
+    
+}), function(req,res){
     
 });
 
 //LOGOUT ROUTE
 router.get("/logout", function(req,res){
+    req.flash("success","Logout successful!")
     req.logout();
     res.redirect("/campgrounds");
 });

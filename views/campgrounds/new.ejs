@@ -2,11 +2,11 @@
 
 <div class="container">
     <div class="row">
-        <h1 style="text-align:center">Create a new campground</h1>
-        <div style="width:30%; margin: 25px auto;">
+        <h1 style="text-align:center">Create a New Review</h1>
+        <div style="width:60%; margin: 25px auto;">
            <form action="/campgrounds" method="POST">
                 <p>
-                    <input class="form-control" type="text" placeholder="name" name="name">
+                    <input class="form-control" type="text" placeholder="movie name" name="name">
                 </p>
                 
                  <p>
@@ -14,7 +14,7 @@
                 </p>
                 
                  <p>
-                    <input class="form-control" type="number" placeholder="price" name="price" min="50" step="50">
+                    <input class="form-control" type="number" placeholder="rating" name="price" min="0" step="1" max="10">
                 </p>
                 
                  <p>

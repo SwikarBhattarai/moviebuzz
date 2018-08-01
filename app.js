@@ -15,8 +15,9 @@ var indexRoutes=require("./routes/index")
 var commentsRoutes=require("./routes/comments")
 var campgroundsRoutes=require("./routes/campgrounds")
 
-mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://swikar:swikar123@ds259351.mlab.com:59351/swikar_yelpcamp");
+mongoose.connect("mongodb://localhost/movie_buzz")
 
 
 
@@ -58,5 +59,5 @@ app.use("/campgrounds",campgroundsRoutes)
 
 
 app.listen(process.env.PORT, process.env.IP, function(req,res){
-    console.log("The Yelpcamp server has started");
+    console.log("The Movie Buzz server has started");
 });

@@ -48,7 +48,7 @@ middlewareObj.isLoggedIn=function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
-    req.flash("error","Login Required")
+    req.flash("error","Please Login to add a review.")
     res.redirect("/login");
 }
 

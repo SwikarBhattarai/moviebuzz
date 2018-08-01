@@ -3,19 +3,19 @@
 <div class="container">
     <div class="row">
         <h1 style="text-align:center">Edit <%=campground.name%></h1>
-        <div style="width:30%; margin: 25px auto;">
+        <div style="width:60%; margin: 25px auto;">
            <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
                 <p>
-                    <input class="form-control" type="text" placeholder="name" name="campground[name]" value="<%=campground.name%>">
+                    <input class="form-control" type="text" placeholder="movie name" name="campground[name]" value="<%=campground.name%>">
                 </p>
                 
                  <p>
                     <input class="form-control" type="text" placeholder="image url" name="campground[image]" value="<%=campground.image%>">
                 </p>
                 
-                 <p>
-                    <input class="form-control" type="price" name="campground[price]" value="<%= campground.price%>">
-                </p
+                  <p>
+                    <input class="form-control" type="number" value="<%=campground.price%>" name="price" min="0" step="1" max="10">
+                </p>
                 
                  <p>
                     <textarea class="form-control" type="text" rows=5 columns=20 name="campground[description]"><%=campground.description%></textarea>
