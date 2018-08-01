@@ -29,17 +29,24 @@ router.post("/", middleware.isLoggedIn, function (req,res){
     //add to campground array
     var newCampground={name: name, image: image, price:price, description:description, author:author}
     
-    //create new campground and save to DB
-    Campground.create(newCampground,function(err,newlyCreated){
-       if(err){
-           console.log(err);
-       } else{
-           req.flash("success", "your review was added successfully!")
-           res.redirect("/campgrounds");
-       }
-    });
     
+        //create new campground and save to DB
+        Campground.create(newCampground,function(err,newlyCreated){
+           if(err){
+               req.flash("error", "Something wrong. Try again later.")
+                res.redirect("back");
+           } else{
+               req.flash("success", "your review was added successfully!")
+               res.redirect("/campgrounds");
+           }
+        });
+    
+   
 });
+
+
+
+
 
 router.get("/new",middleware.isLoggedIn, function(req,res){
     res.render("campgrounds/new", {currentUser:req.user});
