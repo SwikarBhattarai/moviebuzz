@@ -6,7 +6,13 @@
     <header class="jumbotron">
         <div class="container">
             <h1>Welcome to Movie Buzz!</h1>
-            <p>Watched a movie? <a href="/login">Sign in </a>to share your review with us. </p>
+            <p>Watched a movie?</p>
+            <% if (!currentUser){%>
+            <p><a href="/login">Sign in </a>to share your review with us.</a></p>
+            <% }else{ %>
+            <p>Add a Movie Review Now!</p>
+            <%}%>
+            
             <p>
                 <a class="btn btn-primary btn-lg" href="/movies/new">Add a Movie Review</a>
             </p>
@@ -14,7 +20,7 @@
         
     </header>
     
-    <div><h3>Latest Movie Reviews</h3></div>
+    <div><h3 style="margin-bottom:5px">Latest Movie Reviews</h3></div>
     <div class="row text-center">
        
        <% movies.forEach(function(movie){ %>

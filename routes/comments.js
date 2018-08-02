@@ -25,7 +25,7 @@ router.post("/", middleware.isLoggedIn, function(req,res){
             console.log(err)
             res.redirect("/movies")
         }else{
-    
+            if(req.body.text){
                 Comment.create(req.body.comment,function(err,comment){
                 if(err){
                      req.flash("error","Something went wrong. Try again later.")
@@ -40,7 +40,13 @@ router.post("/", middleware.isLoggedIn, function(req,res){
                     movie.save();
                     res.redirect("/movies/" +movie._id);
                 }
-            }) 
+            }) ;
+            }else{
+                req.flash("error", "Comment cannot be empty!")
+                res.redirect("back");
+            }
+    
+                
            
         }
     })

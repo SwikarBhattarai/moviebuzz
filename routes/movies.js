@@ -29,7 +29,7 @@ router.post("/", middleware.isLoggedIn, function (req,res){
     //add to movie array
     var newMovie={name: name, image: image, rating:rating, description:description, author:author}
     
-    
+    if(name && image && rating && description){
         //create new movie and save to DB
         Movie.create(newMovie,function(err,newlyCreated){
            if(err){
@@ -40,9 +40,13 @@ router.post("/", middleware.isLoggedIn, function (req,res){
                res.redirect("/movies");
            }
         });
-    
-   
+
+    }else{
+        req.flash("error", "Please fill all the fields to upload a review.")
+        res.redirect("back")
+    }
 });
+        
 
 
 
