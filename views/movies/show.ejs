@@ -19,7 +19,7 @@
                     <h4 ><a><%=movie.name%></a></h4>
                     <p><i>Posted By: <%=movie.author.username %></i></p>
                     <p style="font-size:11px"><%=movie.created.toDateString()%></p>
-                    <p style="text-align:justify; font-family:'Open Sans', sans-serif"><%=movie.description%></p>
+                    <p style="text-align:justify; font-family:'Open Sans', sans-serif ; line-height=140%"><%=movie.description%></p>
                     
                     
                     <% if(currentUser && movie.author.id.equals(currentUser._id)){ %>
