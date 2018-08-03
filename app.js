@@ -12,6 +12,8 @@ var User=require("./models/user");
 var methodoverride=require("method-override")
 app.locals.moment=require("moment");
 
+
+
 var indexRoutes=require("./routes/index")
 var commentsRoutes=require("./routes/comments")
 var moviesRoutes=require("./routes/movies")
@@ -21,6 +23,7 @@ mongoose.connect(process.env.DATABASEURL);
 
 
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodoverride("_method"));

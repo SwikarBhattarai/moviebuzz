@@ -2,18 +2,35 @@
 
 
 <div class="login-form">    
-    <form action="/register" method="post">
+    <form action="/register" method="post" data-toggle="validator">
     	<h4 class="modal-title">Register a new Account</h4>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" name="username" required="required">
         </div>
+        
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+            <input type="password" data-minlength="6" class="form-control" name="password" id="inputPassword" placeholder="Password" required>
+            <div class="help-block">Minimum of 6 characters</div>
         </div>
-      
-        <input type="submit" id="register-btn" class="btn btn-warning btn-block btn-lg" value="Register">              
+              
+        <div class="form-group">
+            <input type="password" class="form-control" id="inputPasswordConfirm" name="confirmPassword" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm Password" required>
+            <div class="help-block with-errors"></div>
+        </div>
+            
+		<div class="form-group">
+			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+		</div>
+		
+		<br>
+		<br>
+		
+        <div>
+            <input type="submit" id="register-btn" class="btn btn-warning btn-block btn-lg" value="Register">           
+        </div>
+           
     </form>			
-    <div class="text-center small">Already have a account? <a href="/register">Login</a></div>
+    <div class="text-center small">Already have a account? <a href="/login">Login</a></div>
 </div>
 </body>
 </html>                                		                                                   
