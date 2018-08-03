@@ -42,23 +42,20 @@
                 </div>
                 <% movie.comments.forEach(function(comment){ %>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 margin-check">
                             <p></p>
                             <strong><%= comment.author.username %></strong>
+                            <p style="text-align:justify; font-family:'Open Sans', sans-serif"><%=comment.text%></p>
                             <span class="pull-right" style="font-size:11px"><%=moment(comment.created).fromNow()%></span>
+                            
+                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a class="btn btn-warning btn-xs" href="/movies/<%=movie._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form class="delete-form" action="/movies/<%=movie._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                   <button class="btn btn-danger btn-xs">Delete</button> 
+                                </form>
+                            <% } %>
                         </div>
-                     </div>
-                    <p><%= comment.text %></p>
-                    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                         <a class="btn btn-warning btn-xs" href="/movies/<%=movie._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                    <form class="delete-form" action="/movies/<%=movie._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                       <button class="btn btn-danger btn-xs">Delete</button> 
-                    </form>
-                  
-                   <% } %>
-                   
-                    
-                   
+                    </div>
                 <% }) %>
             </div>
         </div>

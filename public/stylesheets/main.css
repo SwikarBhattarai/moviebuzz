@@ -19,3 +19,18 @@
     display: inline;
 }
 
+.margin-check {
+ display: inline-block;
+  position: relative;
+}
+
+.margin-check:after {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid #d2d7da;
+  width: 100%;
+  margin-bottom: 5px;
+  transform: translateX(-50%);
+  bottom: -15px;
+  left: 50%;
+}

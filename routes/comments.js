@@ -25,29 +25,27 @@ router.post("/", middleware.isLoggedIn, function(req,res){
             console.log(err)
             res.redirect("/movies")
         }else{
-            if(req.body.text){
-                Comment.create(req.body.comment,function(err,comment){
+             Comment.create(req.body.comment,function(err,comment){
                 if(err){
-                     req.flash("error","Something went wrong. Try again later.")
-                    res.redirect("back")
+                    console.log(err)
                 }else{
-                    //add username and id to comment
-                    comment.author.id=req.user._id;
-                    comment.author.username=req.user.username;
-                    //save comment
-                    comment.save();
-                    movie.comments.push(comment);
-                    movie.save();
-                    res.redirect("/movies/" +movie._id);
-                }
-            }) ;
-            }else{
-                req.flash("error", "Comment cannot be empty!")
-                res.redirect("back");
-            }
-    
+                    if(comment.text){
+                        //add username and id to comment
+                        comment.author.id=req.user._id;
+                        comment.author.username=req.user.username;
+                        //save comment
+                        comment.save();
+                        movie.comments.push(comment);
+                        movie.save();
+                        res.redirect("/movies/"+movie._id);
+                    }else{
+                        req.flash("error","Empty comment cannot be posted!")
+                        res.redirect("back");
+                    }
                 
-           
+                }
+            })
+        
         }
     })
            
