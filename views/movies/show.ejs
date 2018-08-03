@@ -18,7 +18,7 @@
                     <h4 class="pull-right">Rating: <%= movie.rating %>/10</h4>
                     <h4 ><a><%=movie.name%></a></h4>
                     <p><i>Posted By: <%=movie.author.username %></i></p>
-                    <p style="font-size:11px"><%=movie.created.toDateString()%></p>
+                    <p style="font-size:11px"><%=moment(movie.created).fromNow()%></p>
                     <p style="text-align:justify; font-family:'Open Sans', sans-serif ; line-height=140%"><%=movie.description%></p>
                     
                     
@@ -45,7 +45,7 @@
                         <div class="col-md-12">
                             <p></p>
                             <strong><%= comment.author.username %></strong>
-                            <span class="pull-right" style="font-size:11px"><%=comment.created.toDateString()%></span>
+                            <span class="pull-right" style="font-size:11px"><%=moment(comment.created).fromNow()%></span>
                         </div>
                      </div>
                     <p><%= comment.text %></p>
