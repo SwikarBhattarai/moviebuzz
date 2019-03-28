@@ -21,7 +21,6 @@ var moviesRoutes=require("./routes/movies")
 mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://localhost/movie_buzz")
 
-
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("view engine","ejs");
